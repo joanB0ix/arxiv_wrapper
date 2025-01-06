@@ -1,8 +1,8 @@
-use arxiv_wrapper::client::ArxivClient;
+use arxiv_wrapper::{client::ArxivClient, models::Query};
 
 #[tokio::main]
 async fn main() {
-    let query = "search_query=all:electron&start=0&max_results=10";
+    let query = Query::new("all:electron".to_string(), 0, 10);
     let arxiv_client = ArxivClient::new();
 
     match arxiv_client.query(query).await {
