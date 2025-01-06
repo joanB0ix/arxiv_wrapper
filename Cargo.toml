@@ -7,3 +7,5 @@ edition = "2021"
 tokio = { version = "1", features = ["full"] }
 reqwest = { version = "0.12.12", features = ["json"] }
 thiserror = { version = "2.0.9" }
+serde = { version = "1.0", features = ["derive"] }
+quick-xml = { version = "0.37.2", features = ["serialize"] }

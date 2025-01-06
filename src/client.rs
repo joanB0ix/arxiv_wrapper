@@ -1,4 +1,8 @@
-use crate::{error::ArxivError, models::Query};
+use crate::{
+    error::ArxivError,
+    models::Query,
+    parser::{parse_feed, Feed},
+};
 use reqwest::Client;
 
 const ARXIV_API_BASE_URL: &str = "http://export.arxiv.org/api/query";
@@ -16,10 +20,13 @@ impl ArxivClient {
         }
     }
 
-    pub async fn query(&self, query: Query) -> Result<String, ArxivError> {
+    pub async fn query(&self, query: Query) -> Result<Feed, ArxivError> {
         let url = format!("{}?{}", self.base_url, query.to_query_string());
         let response = self.http_client.get(&url).send().await?;
 
-        response.text().await.map_err(ArxivError::from)
+        let xml = response.text().await?; // the big XML string
+
+        let feed = parse_feed(&xml)?;
+        Ok(feed)
     }
 }
