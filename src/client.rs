@@ -30,3 +30,15 @@ impl ArxivClient {
         Ok(feed)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    #[tokio::test]
+    async fn test_query_when_valid_feed_then_returns_parsed_feed() {}
+
+    #[tokio::test]
+    async fn test_query_when_non_200_status_then_returns_error() {}
+
+    #[tokio::test]
+    async fn test_query_when_malformed_xml_then_returns_parse_error() {}
+}
