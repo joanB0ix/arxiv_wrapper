@@ -24,7 +24,7 @@ impl ArxivClient {
         let url = format!("{}?{}", self.base_url, query.to_query_string());
         let response = self.http_client.get(&url).send().await?;
 
-        let xml = response.text().await?; // the big XML string
+        let xml = response.text().await?;
 
         let feed = parse_feed(&xml)?;
         Ok(feed)
