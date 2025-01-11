@@ -20,3 +20,17 @@ impl Query {
         )
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_to_query_string_happy_path() {
+        let q = Query::new("electron".to_string(), 10, 25);
+        assert_eq!(
+            q.to_query_string(),
+            "search_query=electron&start=10&max_results=25"
+        )
+    }
+}
