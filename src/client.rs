@@ -1,7 +1,7 @@
 use crate::{
     error::ArxivError,
-    models::Query,
-    parser::{parse_feed, Feed},
+    models::{feed::Feed, query::Query},
+    parser::parse_feed,
 };
 use reqwest::Client;
 

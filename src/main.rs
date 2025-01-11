@@ -1,4 +1,4 @@
-use arxiv_wrapper::{client::ArxivClient, models::Query};
+use arxiv_wrapper::{client::ArxivClient, models::query::Query};
 
 #[tokio::main]
 async fn main() {
