@@ -27,6 +27,7 @@ impl ArxivClient {
         let xml = response.text().await?;
 
         let feed = parse_feed(&xml)?;
+
         Ok(feed)
     }
 }
